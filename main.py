@@ -10,20 +10,20 @@ class Auto:
 
     def cantidadAsientos (self):
         contador = 0
-        for i in range(len(asientos)):
-            if asientos[i] is not None:
+        for i in range(len(self.asientos)):
+            if self.asientos[i] is not None:
                 contador += 1
         return contador
 
     def verificarIntegridad (self):
         registroAuto =  self.registro
-        registroMotor = motor.registro
+        registroMotor = self.motor.registro
 		
         if registroAuto == registroMotor:
-            for i in range(len(asientos)):
-                if asientos[i] is None:
+            for i in range(len(self.asientos)):
+                if self.asientos[i] is None:
                     continue
-                registroasiento = asientos[i].registro
+                registroasiento = self.asientos[i].registro
                 if registroasiento == 0:
                     continue
                 elif registroasiento == registroAuto:
@@ -61,19 +61,36 @@ class Motor:
             self.tipo = tipo
 
 if __name__ == "__main__":
-    asientos = (
-        Asiento("rojo", 5000, 3),
-        Asiento("negro", 5000, 3),
-        Asiento("verde", 5000, 3),
-        None
-    )
+    # asientos = (
+    #     Asiento("rojo", 5000, 3),
+    #     Asiento("negro", 5000, 3),
+    #     Asiento("verde", 5000, 3),
+    #     None
+    # )
 
-    asientos[1].cambiarColor("blanco")
-    print(asientos[1].color)
-    motor = Motor(4, "ni idea", 3)
-    print(asientos[1].registro)
-    auto = Auto("Atos", 4555, "Hyunday", asientos, motor, 3)
+    # asientos[1].cambiarColor("blanco")
+    # print(asientos[1].color)
+    # motor = Motor(4, "ni idea", 3)
+    # print(asientos[1].registro)
+    # auto = Auto("Atos", 4555, "Hyunday", asientos, motor, 3)
+    # print(auto.cantidadAsientos())
+    # print(auto.verificarIntegridad())
+
+    auto = Auto("model 3", 33000, list(),"tesla", Motor(4, "electrico", 142), 341)
     print(auto.cantidadAsientos())
     print(auto.verificarIntegridad())
 
-    auto2 = Auto("model 3", 33000, list(),"tesla", Motor(4, "electrico", 142), 341)
+    a1 = Auto("model 3", 33000, [Asiento("blanco", 5000, 32),None, None, Asiento("blanco", 5000, 32), None],
+          "tesla", Motor(4, "electrico", 32), 32)
+    print(a1.cantidadAsientos())
+    print(a1.verificarIntegridad())
+
+
+    a2 = Auto("model 3", 33000, [Asiento("blanco", 5000, 40),None, None, Asiento("blanco", 5000, 32), None],
+    "tesla", Motor(4, "electrico", 32), 32)
+    print(a2.cantidadAsientos())
+    print(a2.verificarIntegridad())
+
+
+
+    
