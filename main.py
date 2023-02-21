@@ -1,7 +1,8 @@
 class Auto:
     cantidadCreados = 0
-    def __init__ (self, modelo, asientos, marca, motor, registro): #__init__ funciona como constructor
+    def __init__ (self, modelo, precio, asientos, marca, motor, registro): #__init__ funciona como constructor
         self.modelo = modelo
+        self.precio = precio
         self.asientos = asientos
         self.marca = marca
         self.motor = motor 
@@ -20,6 +21,8 @@ class Auto:
 		
         if registroAuto == registroMotor:
             for i in range(len(asientos)):
+                if asientos[i] is None:
+                    continue
                 registroasiento = asientos[i].registro
                 if registroasiento == 0:
                     continue
@@ -62,12 +65,15 @@ if __name__ == "__main__":
         Asiento("rojo", 5000, 3),
         Asiento("negro", 5000, 3),
         Asiento("verde", 5000, 3),
+        None
     )
 
     asientos[1].cambiarColor("blanco")
     print(asientos[1].color)
     motor = Motor(4, "ni idea", 3)
     print(asientos[1].registro)
-    auto = Auto("Atos", "Hyunday", asientos, motor, 3)
+    auto = Auto("Atos", 4555, "Hyunday", asientos, motor, 3)
     print(auto.cantidadAsientos())
     print(auto.verificarIntegridad())
+
+    auto2 = Auto("model 3", 33000, list(),"tesla", Motor(4, "electrico", 142), 341)
